@@ -17,4 +17,12 @@ defmodule RealDealApiWeb.AccountView do
       has_password: account.has_password
     }
   end
+
+  def render("account_token.json", %{account: account, token: token}) do
+    %{
+      id: account.id,
+      email: account.email,
+      token: token
+    }
+  end
 end

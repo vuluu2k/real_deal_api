@@ -7,9 +7,9 @@ defmodule RealDealApi.Accounts.Account do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "accounts" do
-    field :email, :string
-    field :has_password, :string
-    has_one :user, User
+    field(:email, :string)
+    field(:has_password, :string)
+    has_one(:user, User)
 
     timestamps()
   end
@@ -31,5 +31,5 @@ defmodule RealDealApi.Accounts.Account do
     change(changeset, has_password: Bcrypt.hash_pwd_salt(has_password))
   end
 
-  defp put_password_hash(_changeset), do: changeset
+  defp put_password_hash(changeset), do: changeset
 end
