@@ -1,5 +1,16 @@
 defmodule RealDealApiWeb.Router do
   use RealDealApiWeb, :router
+  use Plug.ErrorHandler
+
+  defp handle_errors(conn, %{reason: %Phoenix.Router.NoRouteError{message: message}}) do
+    IO.inspect(message, label: "in here 1 _________")
+    conn |> json(%{errors: message}) |> halt()
+  end
+
+  defp handle_errors(conn, %{reason: %{message: message}}) do
+    IO.inspect(message, label: "in here 2 _________")
+    conn |> json(%{errors: message}) |> halt()
+  end
 
   pipeline :api do
     plug(:accepts, ["json"])
@@ -8,7 +19,8 @@ defmodule RealDealApiWeb.Router do
   scope "/api", RealDealApiWeb do
     pipe_through(:api)
 
-    get("/", DefaultController, :index)
-    post("/accounts/create", AccountController, :create)
+    get "/", DefaultController, :index
+    post "/accounts/create", AccountController, :create
+    post "/accounts/sign_in", AccountController, :sign_in
   end
 end
