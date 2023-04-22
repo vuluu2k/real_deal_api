@@ -6,7 +6,7 @@ config :real_deal_api, RealDealApi.Repo,
   password: "Anhvuta123",
   hostname: "localhost",
   database: "real_deal_api_dev",
-  port: 5434,
+  port: 5436,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
