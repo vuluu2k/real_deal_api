@@ -3,10 +3,10 @@ import Config
 # Configure your database
 config :real_deal_api, RealDealApi.Repo,
   username: "vuluu2k",
-  password: "Anhvuta123",
+  password: "12345678",
   hostname: "localhost",
   database: "real_deal_api_dev",
-  port: 5436,
+  port: 5432,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
